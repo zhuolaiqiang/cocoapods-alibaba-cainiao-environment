@@ -2,6 +2,7 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/cocoapods-alibaba-cainiao-environment" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/pod_plugin/cocoapods-alibaba-cainiao-environment" vcs="Git" />
   </component>
 </project>
