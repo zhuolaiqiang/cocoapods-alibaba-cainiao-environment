@@ -1,4 +1,4 @@
-source 'http://gems.alibaba-inc.com'
+ source "http://gems.alibaba-inc.com"
 
 # Specify your gem's dependencies in cocoapods-alibaba-cainiao-environment.gemspec
 gemspec

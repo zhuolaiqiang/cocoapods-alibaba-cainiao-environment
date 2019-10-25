@@ -1,1 +1,1 @@
-require './modify-aliyun-oss.rb'
+require 'cocoapods-alibaba-cainiao-environment/modify-aliyun-oss'
