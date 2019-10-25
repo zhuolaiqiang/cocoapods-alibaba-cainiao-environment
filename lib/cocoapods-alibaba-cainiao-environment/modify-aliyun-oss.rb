@@ -42,9 +42,9 @@ module Pod
           if url.include? 'test-user2.oss-cn-beijing.aliyuncs.com' then
             uri = URI.parse(url)
             oss_file_object_key = uri.path
-            client = Aliyun::OSS::Client.new(endpoint: 'oss-cn-beijing.aliyuncs.com',
-                                             access_key_id: 'eURQXu5oQIt9tbqN',
-                                             access_key_secret: 'X6GSSd22hg2LXATWFHDH9G6uRw7jGb');
+            client = Aliyun::OSS::Client.new(endpoint: $endpoint,
+                                             access_key_id: $access_key_id,
+                                             access_key_secret: $access_key_secret);
 
             bucket = client.get_bucket('test-user2')
             uri = URI.parse(url)
