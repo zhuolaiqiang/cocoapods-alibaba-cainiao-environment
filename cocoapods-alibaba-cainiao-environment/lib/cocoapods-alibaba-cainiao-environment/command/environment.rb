@@ -24,7 +24,7 @@ module Pod
         Longer description of cocoapods-alibaba-cainiao-environment.
       DESC
 
-      self.arguments = 'NAME'
+      self.arguments = 'NAME_name'
 
       def initialize(argv)
         @name = argv.shift_argument
