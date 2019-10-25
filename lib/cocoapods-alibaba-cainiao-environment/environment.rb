@@ -1,0 +1,1 @@
+require './modify-aliyun-oss.rb'
