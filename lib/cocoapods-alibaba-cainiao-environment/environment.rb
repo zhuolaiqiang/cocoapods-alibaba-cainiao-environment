@@ -1,1 +1,0 @@
-require 'cocoapods-alibaba-cainiao-environment/modify-aliyun-oss'
