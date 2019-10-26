@@ -15,7 +15,6 @@ module Pod
           end
         end
 
-        # puts 'gggggggggg ' + path.to_s
         path = Pathname.new(path)
         unless path.exist?
           raise Informative, "No podspec exists at path `#{path}`."
@@ -27,11 +26,10 @@ module Pod
           string.encode!('UTF-8')
         end
 
-        podObject = JSON.parse(string)
-
-        if (podObject['source'] && podObject['source']['http'])
-          # puts path.to_s
-          process_source_http_url(podObject['source']['http'])
+        pod_object = JSON.parse(string)
+        if (pod_object['source'] && pod_object['source']['http'])
+          pod_object['source']['http'] = process_source_http_url(pod_object['source']['http'])
+          string = pod_object.to_json
         end
 
         from_string(string, path, subspec_name)
@@ -49,7 +47,6 @@ module Pod
             bucket = client.get_bucket('test-user2')
             uri = URI.parse(url)
             oss_url = bucket.object_url(uri.path[1...uri.path.length])
-            puts 'oss_url = ' + oss_url
 
             return oss_url
           end
@@ -57,7 +54,6 @@ module Pod
 
         return url
       end
-
     end
   end
 end
