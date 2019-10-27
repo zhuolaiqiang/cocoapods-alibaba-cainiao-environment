@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    cocoapods-alibaba-cainiao-environment (0.0.1)
+    cocoapods-alibaba-cainiao-environment (0.0.2)
 
 GEM
   remote: http://gems.alibaba-inc.com/
