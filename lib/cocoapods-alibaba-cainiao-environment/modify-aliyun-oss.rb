@@ -28,25 +28,29 @@ module Pod
 
         pod_object = JSON.parse(string)
         if (pod_object['source'] && pod_object['source']['http'])
-          pod_object['source']['http'] = process_source_http_url(pod_object['source']['http'])
+          pod_object['source']['http'] = process_source_http_url(pod_object['source']['http'], pod_object['version'])
           string = pod_object.to_json
         end
 
         from_string(string, path, subspec_name)
       end
 
-      def process_source_http_url(url)
+      def process_source_http_url(url, version)
+
         if url != nil then
-          if url.include? 'test-user2.oss-cn-beijing.aliyuncs.com' then
+          if url.include? 'ios-lib.oss-cn-beijing.aliyuncs.com' then
             uri = URI.parse(url)
             oss_file_object_key = uri.path
+            if $endpoint.nil? || $access_key_id.nil? || $access_key_secret.nil?
+              raise("未设置全局变量：$endpoint $access_key_id $access_key_secret")
+            end
+
             client = Aliyun::OSS::Client.new(endpoint: $endpoint,
                                              access_key_id: $access_key_id,
                                              access_key_secret: $access_key_secret);
 
-            bucket = client.get_bucket('test-user2')
-            uri = URI.parse(url)
-            oss_url = bucket.object_url(uri.path[1...uri.path.length])
+            bucket = client.get_bucket('ios-lib')
+            oss_url = bucket.object_url(oss_file_object_key[1...oss_file_object_key.length] + "-#{version}.zip")
 
             return oss_url
           end
